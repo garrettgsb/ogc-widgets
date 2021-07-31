@@ -3,7 +3,7 @@ import PaneManagerWidget from './PaneManagerWidget';
 
 function App() {
   return (
-    <div className="App">
+    <div className="app">
       <PaneManagerWidget />
     </div>
   );
