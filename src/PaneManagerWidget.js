@@ -26,13 +26,13 @@ const OneThirdTwoThirds = (props) => {
   )
 }
 
-const LeftSideData = ({ itemList }) => {
+const LeftSideData = ({ items }) => {
   return (
     <aside className='one-third'>
-      {itemList.map((item) => {
+      {items.map((item) => {
         return (
           <>
-            <h3 className="menu-item selected" >{item.title}</h3>
+            <h3 className="menu-item" >{item.title}</h3>
             {/* <img /> */}
           </>
         )
@@ -41,10 +41,10 @@ const LeftSideData = ({ itemList }) => {
   )
 }
 
-const VansCategory = () => {
+const VansCategory = ({ items }) => {
   return (
     <OneThirdTwoThirds>
-      <LeftSideData itemList={appData} />
+      <LeftSideData items={items} />
       <section className='two-third'>
 
       </section>
@@ -52,18 +52,18 @@ const VansCategory = () => {
   )
 }
 
-const WeaponsCategory = () => (
+const WeaponsCategory = ({ items }) => (
   <OneThirdTwoThirds>
     <aside className='one-third'></aside>
     <section className='two-third'></section>
   </OneThirdTwoThirds>
 );
 
-const ContentArea = () => {
+const ContentArea = ({ items }) => {
   return (
     <section className="content-area">
-      { true && <VansCategory></VansCategory>}
-      { false && <WeaponsCategory></WeaponsCategory>}
+      { true && <VansCategory items={items}></VansCategory>}
+      { false && <WeaponsCategory items={items}></WeaponsCategory>}
     </section>
   )
 }
@@ -76,12 +76,12 @@ const BottomBar = () => {
 }
 const PaneManagerWidget = () => {
   const [selectedCategory, setSelectedCategory] = useState(Object.values(appCategories)[0]);
-
+  const items = appData.filter((item) => item.categories.includes(selectedCategory));
   return (
     <main className="layout-manager">
       {/* <p>{JSON.stringify(appData)}</p> */}
       <SideBar categories={appCategories} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
-      <ContentArea />
+      <ContentArea items={items} />
       <BottomBar />
     </main>
 
