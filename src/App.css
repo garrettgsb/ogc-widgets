@@ -38,10 +38,18 @@
   width: 100vw;
 }
 
-.onethirdtwothirds {
+.one-third-two-thirds {
   display: grid;
   grid-template-columns: 1fr 2fr;
   width: 100%;
   height: 100%;
   /* grid-template-rows: 1fr; */
+}
+
+.one-third {
+  background-color: dodgerblue;
+}
+
+.two-third {
+  background-color: chocolate;
 }

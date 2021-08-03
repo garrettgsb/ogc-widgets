@@ -1,11 +1,16 @@
 // import React from React;
-import { data as appData } from './appData.js';
+import { data as appData, CATEGORIES as appCategories } from './appData.js';
 
-
-const SideBar = () => {
+const SideBar = ({ categories }) => {
   return (
     <aside className="sidebar">
-
+      {
+        Object.values(categories).map((category) => {
+          return (
+            <h3>{category}</h3>
+          );
+        })
+      }
 
     </aside>
   )
@@ -19,19 +24,36 @@ const OneThirdTwoThirds = (props) => {
   )
 }
 
+const LeftSideData = ({ itemList }) => {
+  return (
+    <aside className='one-third'>
+      {itemList.map((item) => {
+        return (
+          <>
+            <h3>{item.title}</h3>
+            {/* <img /> */}
+          </>
+        )
+      })}
+    </aside>
+  )
+}
+
 const VansCategory = () => {
   return (
     <OneThirdTwoThirds>
-      <aside></aside>
-      <section></section>
+      <LeftSideData itemList={appData} />
+      <section className='two-third'>
+
+      </section>
     </OneThirdTwoThirds>
   )
 }
 
 const WeaponsCategory = () => (
   <OneThirdTwoThirds>
-    <aside></aside>
-    <section></section>
+    <aside className='one-third'></aside>
+    <section className='two-third'></section>
   </OneThirdTwoThirds>
 );
 
@@ -53,8 +75,8 @@ const BottomBar = () => {
 const PaneManagerWidget = () => {
   return (
     <main className="layout-manager">
-      <p>{JSON.stringify(appData)}</p>
-      <SideBar />
+      {/* <p>{JSON.stringify(appData)}</p> */}
+      <SideBar categories={appCategories} />
       <ContentArea />
       <BottomBar />
     </main>
