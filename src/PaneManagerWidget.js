@@ -1,13 +1,15 @@
-// import React from React;
+import { useState } from 'react';
 import { data as appData, CATEGORIES as appCategories } from './appData.js';
 
-const SideBar = ({ categories }) => {
+const SideBar = ({ categories, selectedCategory, setSelectedCategory }) => {
+
   return (
     <aside className="sidebar">
       {
         Object.values(categories).map((category) => {
+          const classList = selectedCategory === category ? "menu-item selected" : "menu-item";
           return (
-            <h3>{category}</h3>
+            <h3 className={classList} onClick={() => setSelectedCategory(category)} >{category}</h3>
           );
         })
       }
@@ -30,7 +32,7 @@ const LeftSideData = ({ itemList }) => {
       {itemList.map((item) => {
         return (
           <>
-            <h3>{item.title}</h3>
+            <h3 className="menu-item selected" >{item.title}</h3>
             {/* <img /> */}
           </>
         )
@@ -73,10 +75,12 @@ const BottomBar = () => {
   )
 }
 const PaneManagerWidget = () => {
+  const [selectedCategory, setSelectedCategory] = useState(Object.values(appCategories)[0]);
+
   return (
     <main className="layout-manager">
       {/* <p>{JSON.stringify(appData)}</p> */}
-      <SideBar categories={appCategories} />
+      <SideBar categories={appCategories} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
       <ContentArea />
       <BottomBar />
     </main>

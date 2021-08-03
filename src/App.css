@@ -53,3 +53,15 @@
 .two-third {
   background-color: chocolate;
 }
+
+.menu-item {
+
+}
+.menu-item:hover {
+  background-color: goldenrod;
+}
+
+.menu-item.selected {
+  background-color: goldenrod;
+  color: purple;
+}
