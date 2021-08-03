@@ -4,13 +4,40 @@ const SideBar = () => {
   return (
     <aside className="sidebar">
 
+
     </aside>
   )
 }
+
+const OneThirdTwoThirds = (props) => {
+  return (
+    <main className='one-third-two-thirds'>
+      { props.children}
+    </main>
+  )
+}
+
+const VansCategory = () => {
+  return (
+    <OneThirdTwoThirds>
+      <aside></aside>
+      <section></section>
+    </OneThirdTwoThirds>
+  )
+}
+
+const WeaponsCategory = () => (
+  <OneThirdTwoThirds>
+    <aside></aside>
+    <section></section>
+  </OneThirdTwoThirds>
+);
+
 const ContentArea = () => {
   return (
     <section className="content-area">
-
+      { true && <VansCategory></VansCategory>}
+      { false && <WeaponsCategory></WeaponsCategory>}
     </section>
   )
 }
@@ -29,6 +56,7 @@ const PaneManagerWidget = () => {
       <ContentArea />
       <BottomBar />
     </main>
+
 
   )
 }
