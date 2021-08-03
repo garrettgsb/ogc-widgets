@@ -1,4 +1,6 @@
 // import React from React;
+import { data as appData } from './appData.js';
+
 
 const SideBar = () => {
   return (
@@ -51,7 +53,7 @@ const BottomBar = () => {
 const PaneManagerWidget = () => {
   return (
     <main className="layout-manager">
-
+      <p>{JSON.stringify(appData)}</p>
       <SideBar />
       <ContentArea />
       <BottomBar />
