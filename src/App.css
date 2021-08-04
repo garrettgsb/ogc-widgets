@@ -65,3 +65,11 @@
   background-color: goldenrod;
   color: purple;
 }
+
+.chosen {
+  color: rgb(2, 230, 238);
+}
+
+.not-chosen {
+  color: rgb(199, 82, 4);
+}

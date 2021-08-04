@@ -11,13 +11,14 @@ const OneThirdTwoThirds = (props) => {
   )
 }
 
-const LeftSideData = ({ items, setRightSideFocus }) => {
+const LeftSideData = ({ items, setRightSideFocus, rightSideFocus }) => {
   return (
     <aside className='one-third'>
       {items.map((item) => {
+        const classList = item === rightSideFocus ? "menu-item selected" : "menu-item";
         return (
           <>
-            <h3 className="menu-item" onClick={() => setRightSideFocus(item)}>{item.title}</h3>
+            <h3 className={classList} onClick={() => setRightSideFocus(item)}>{item.title}</h3>
             {/* <img /> */}
           </>
         )
@@ -31,7 +32,20 @@ const RightSideData = ({ rightSideFocus }) => {
   return (
     <aside className='two-third'>
 
-      { rightSideFocus.title === undefined ? <h1>Click for more info</h1> : <h1>{rightSideFocus.title}</h1>}
+      { rightSideFocus.title === undefined ?
+        <h1>Click for more info</h1> :
+        <div>
+          <h1>{rightSideFocus.title}</h1>
+          <h2>Pros</h2>
+          <h3>{rightSideFocus.pros}</h3>
+          <h2>Cons</h2>
+          <h3>{rightSideFocus.cons}</h3>
+          <h2>Description</h2>
+          <p>{rightSideFocus.blurb}</p>
+
+        </div>
+
+      }
 
     </aside>
   )
@@ -40,7 +54,7 @@ const RightSideData = ({ rightSideFocus }) => {
 const VansCategory = ({ items, rightSideFocus, setRightSideFocus }) => {
   return (
     <OneThirdTwoThirds>
-      <LeftSideData items={items} setRightSideFocus={setRightSideFocus} />
+      <LeftSideData items={items} setRightSideFocus={setRightSideFocus} rightSideFocus={rightSideFocus} />
       <RightSideData rightSideFocus={rightSideFocus} />
 
     </OneThirdTwoThirds>
@@ -69,6 +83,7 @@ const ContentArea = ({ items }) => {
 
 const PaneManagerWidget = () => {
   const [selectedCategory, setSelectedCategory] = useState(Object.values(appCategories)[0]);
+  const [chosenCategories, setChosenCategories] = useState([]);
 
   const items = appData.filter((item) => item.categories.includes(selectedCategory));
   return (
@@ -76,7 +91,7 @@ const PaneManagerWidget = () => {
       {/* <p>{JSON.stringify(appData)}</p> */}
       <SideBar categories={appCategories} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
       <ContentArea items={items} />
-      <BottomBar />
+      <BottomBar appCategories={appCategories} chosenCategories={chosenCategories} />
     </main>
 
 
