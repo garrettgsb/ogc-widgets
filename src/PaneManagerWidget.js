@@ -11,13 +11,13 @@ const OneThirdTwoThirds = (props) => {
   )
 }
 
-const LeftSideData = ({ items }) => {
+const LeftSideData = ({ items, setRightSideFocus }) => {
   return (
     <aside className='one-third'>
       {items.map((item) => {
         return (
           <>
-            <h3 className="menu-item" >{item.title}</h3>
+            <h3 className="menu-item" onClick={() => setRightSideFocus(item)}>{item.title}</h3>
             {/* <img /> */}
           </>
         )
@@ -26,18 +26,23 @@ const LeftSideData = ({ items }) => {
   )
 }
 
-const RightSideData = ({ items }) => {
+const RightSideData = ({ rightSideFocus }) => {
+  console.log(rightSideFocus);
   return (
-    <h1>Right Side</h1>
+    <aside className='two-third'>
+      <h1>Right Side</h1>
+
+      { rightSideFocus === undefined ? <h1>Click for more info</h1> : <h1>{rightSideFocus.title}</h1>}
+
+    </aside>
   )
 }
 
-const VansCategory = ({ items }) => {
+const VansCategory = ({ items, rightSideFocus, setRightSideFocus }) => {
   return (
     <OneThirdTwoThirds>
-      <LeftSideData items={items} />
-      <RightSideData items={items} />
-
+      <LeftSideData items={items} setRightSideFocus={setRightSideFocus} />
+      <RightSideData rightSideFocus={rightSideFocus} />
 
     </OneThirdTwoThirds>
   )
@@ -53,9 +58,11 @@ const WeaponsCategory = ({ items }) => (
 
 // two types of selected; chosen and added to project
 const ContentArea = ({ items }) => {
+  const [rightSideFocus, setRightSideFocus] = useState([]);
+
   return (
     <section className="content-area">
-      { true && <VansCategory items={items}></VansCategory>}
+      { true && <VansCategory items={items} rightSideFocus={rightSideFocus} setRightSideFocus={setRightSideFocus}></VansCategory>}
       { false && <WeaponsCategory items={items}></WeaponsCategory>}
     </section>
   )
@@ -63,6 +70,7 @@ const ContentArea = ({ items }) => {
 
 const PaneManagerWidget = () => {
   const [selectedCategory, setSelectedCategory] = useState(Object.values(appCategories)[0]);
+
   const items = appData.filter((item) => item.categories.includes(selectedCategory));
   return (
     <main className="layout-manager">
