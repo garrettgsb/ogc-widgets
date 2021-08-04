@@ -30,9 +30,8 @@ const RightSideData = ({ rightSideFocus }) => {
   console.log(rightSideFocus);
   return (
     <aside className='two-third'>
-      <h1>Right Side</h1>
 
-      { rightSideFocus === undefined ? <h1>Click for more info</h1> : <h1>{rightSideFocus.title}</h1>}
+      { rightSideFocus.title === undefined ? <h1>Click for more info</h1> : <h1>{rightSideFocus.title}</h1>}
 
     </aside>
   )
