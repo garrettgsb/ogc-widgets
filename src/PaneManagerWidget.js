@@ -1,22 +1,7 @@
 import { useState } from 'react';
 import { data as appData, CATEGORIES as appCategories } from './appData.js';
-
-const SideBar = ({ categories, selectedCategory, setSelectedCategory }) => {
-
-  return (
-    <aside className="sidebar">
-      {
-        Object.values(categories).map((category) => {
-          const classList = selectedCategory === category ? "menu-item selected" : "menu-item";
-          return (
-            <h3 className={classList} onClick={() => setSelectedCategory(category)} >{category}</h3>
-          );
-        })
-      }
-
-    </aside>
-  )
-}
+import SideBar from './SideBar';
+import BottomBar from './BottomBar';
 
 const OneThirdTwoThirds = (props) => {
   return (
@@ -41,24 +26,32 @@ const LeftSideData = ({ items }) => {
   )
 }
 
+const RightSideData = ({ items }) => {
+  return (
+    <h1>Right Side</h1>
+  )
+}
+
 const VansCategory = ({ items }) => {
   return (
     <OneThirdTwoThirds>
       <LeftSideData items={items} />
-      <section className='two-third'>
+      <RightSideData items={items} />
 
-      </section>
+
     </OneThirdTwoThirds>
   )
 }
 
+// not being rendered yet
 const WeaponsCategory = ({ items }) => (
   <OneThirdTwoThirds>
-    <aside className='one-third'></aside>
+    <LeftSideData items={items} />
     <section className='two-third'></section>
   </OneThirdTwoThirds>
 );
 
+// two types of selected; chosen and added to project
 const ContentArea = ({ items }) => {
   return (
     <section className="content-area">
@@ -67,13 +60,7 @@ const ContentArea = ({ items }) => {
     </section>
   )
 }
-const BottomBar = () => {
-  return (
-    <aside className="bottombar">
 
-    </aside>
-  )
-}
 const PaneManagerWidget = () => {
   const [selectedCategory, setSelectedCategory] = useState(Object.values(appCategories)[0]);
   const items = appData.filter((item) => item.categories.includes(selectedCategory));
