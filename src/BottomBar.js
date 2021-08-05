@@ -1,6 +1,13 @@
-const BottomBar = ({ appCategories, chosenCategories }) => {
+const BottomBar = ({ appCategories, chosenCategories, selections }) => {
 
   const catgegoryList = Object.keys(appCategories);
+  // const pillList = Object.values(selections.filter((selected) => { return selected === true }));
+  const pillList = [];
+  for (const [key, value] of Object.entries(selections)) {
+    if (value === true) {
+      pillList.push(key);
+    }
+  };
   return (
     <aside className="bottombar">
       <h1>Progress</h1>
@@ -11,6 +18,13 @@ const BottomBar = ({ appCategories, chosenCategories }) => {
         )
       })}
       <h1>Item Pills</h1>
+      {
+        pillList.map((pill) => {
+          return (
+            <p>{pill}</p>
+          )
+        })
+      }
 
     </aside>
   )

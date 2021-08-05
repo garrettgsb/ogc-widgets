@@ -12,7 +12,7 @@ const OneThirdTwoThirds = (props) => {
   )
 }
 
-const LeftSideData = ({ items, setRightSideFocus, rightSideFocus }) => {
+const LeftSideData = ({ items, setRightSideFocus, rightSideFocus, updateSelected }) => {
 
   return (
     <aside className='one-third'>
@@ -22,7 +22,7 @@ const LeftSideData = ({ items, setRightSideFocus, rightSideFocus }) => {
           <>
             <h3 className={classList} onClick={() => setRightSideFocus(item)}>{item.title}</h3>
             {/* <img src={aTeam} alt="The A Team" className="small-image" /> */}
-            {/* <button onClick={() => updateSelected(item)}>Add {item.title} to Project</button> */}
+            <button onClick={() => updateSelected(item.title)}>Add {item.title} to Project</button>
           </>
         )
       })}
@@ -31,7 +31,7 @@ const LeftSideData = ({ items, setRightSideFocus, rightSideFocus }) => {
 }
 
 const RightSideData = ({ rightSideFocus }) => {
-  console.log(rightSideFocus);
+  // console.log(rightSideFocus);
   return (
     <aside className='two-third'>
 
@@ -62,10 +62,10 @@ const RightSideData = ({ rightSideFocus }) => {
   )
 }
 
-const VansCategory = ({ items, rightSideFocus, setRightSideFocus }) => {
+const VansCategory = ({ items, rightSideFocus, setRightSideFocus, updateSelected }) => {
   return (
     <OneThirdTwoThirds>
-      <LeftSideData items={items} setRightSideFocus={setRightSideFocus} rightSideFocus={rightSideFocus} />
+      <LeftSideData items={items} setRightSideFocus={setRightSideFocus} rightSideFocus={rightSideFocus} updateSelected={updateSelected} />
       <RightSideData rightSideFocus={rightSideFocus} />
 
     </OneThirdTwoThirds>
@@ -81,12 +81,12 @@ const WeaponsCategory = ({ items }) => (
 );
 
 // two types of selected; chosen and added to project
-const ContentArea = ({ items }) => {
+const ContentArea = ({ items, updateSelected }) => {
   const [rightSideFocus, setRightSideFocus] = useState([]);
 
   return (
     <section className="content-area">
-      { true && <VansCategory items={items} rightSideFocus={rightSideFocus} setRightSideFocus={setRightSideFocus}></VansCategory>}
+      { true && <VansCategory items={items} rightSideFocus={rightSideFocus} setRightSideFocus={setRightSideFocus} updateSelected={updateSelected}></VansCategory>}
       { false && <WeaponsCategory items={items}></WeaponsCategory>}
     </section>
   )
@@ -98,7 +98,13 @@ const PaneManagerWidget = () => {
   const [selections, setSelections] = useState([]);
 
   function updateSelected(selection) {
-    setSelections({ ...selections, [selection]: !selections[selection] });
+    if (selections[selection]) {
+      setSelections({ ...selections, [selection]: !selections[selection] });
+      // console.log(selections);
+    } else {
+      setSelections({ ...selections, [selection]: true });
+      // console.log(selections);
+    };
   }
 
   const items = appData.filter((item) => item.categories.includes(selectedCategory));
@@ -106,8 +112,8 @@ const PaneManagerWidget = () => {
     <main className="layout-manager">
       {/* <p>{JSON.stringify(appData)}</p> */}
       <SideBar categories={appCategories} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
-      <ContentArea items={items} />
-      <BottomBar appCategories={appCategories} chosenCategories={chosenCategories} />
+      <ContentArea items={items} updateSelected={updateSelected} />
+      <BottomBar appCategories={appCategories} chosenCategories={chosenCategories} selections={selections} />
     </main>
 
 
