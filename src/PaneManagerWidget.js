@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { data as appData, CATEGORIES as appCategories } from './appData.js';
 import SideBar from './SideBar';
 import BottomBar from './BottomBar';
+import aTeam from './assets/ateam.jpeg';
 
 const OneThirdTwoThirds = (props) => {
   return (
@@ -12,6 +13,7 @@ const OneThirdTwoThirds = (props) => {
 }
 
 const LeftSideData = ({ items, setRightSideFocus, rightSideFocus }) => {
+
   return (
     <aside className='one-third'>
       {items.map((item) => {
@@ -19,7 +21,8 @@ const LeftSideData = ({ items, setRightSideFocus, rightSideFocus }) => {
         return (
           <>
             <h3 className={classList} onClick={() => setRightSideFocus(item)}>{item.title}</h3>
-            {/* <img /> */}
+            {/* <img src={aTeam} alt="The A Team" className="small-image" /> */}
+            {/* <button onClick={() => updateSelected(item)}>Add {item.title} to Project</button> */}
           </>
         )
       })}
@@ -92,6 +95,11 @@ const ContentArea = ({ items }) => {
 const PaneManagerWidget = () => {
   const [selectedCategory, setSelectedCategory] = useState(Object.values(appCategories)[0]);
   const [chosenCategories, setChosenCategories] = useState([]);
+  const [selections, setSelections] = useState([]);
+
+  function updateSelected(selection) {
+    setSelections({ ...selections, [selection]: !selections[selection] });
+  }
 
   const items = appData.filter((item) => item.categories.includes(selectedCategory));
   return (

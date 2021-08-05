@@ -73,3 +73,8 @@
 .not-chosen {
   color: rgb(199, 82, 4);
 }
+
+.small-image {
+  max-width: 10px;
+  max-height: 10px;
+}

@@ -10,6 +10,7 @@ const BottomBar = ({ appCategories, chosenCategories }) => {
           <h3 className={hasChosen}>{category}</h3>
         )
       })}
+      <h1>Item Pills</h1>
 
     </aside>
   )
