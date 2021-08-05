@@ -36,11 +36,19 @@ const RightSideData = ({ rightSideFocus }) => {
         <h1>Click for more info</h1> :
         <div>
           <h1>{rightSideFocus.title}</h1>
-          <h2>Pros</h2>
-          <h3>{rightSideFocus.pros}</h3>
-          <h2>Cons</h2>
-          <h3>{rightSideFocus.cons}</h3>
-          <h2>Description</h2>
+          <h4>Pros</h4>
+          <ul>{rightSideFocus.pros.map((pro) => {
+            return (
+              <li>{pro}</li>
+            )
+          })}</ul>
+          <h4>Cons</h4>
+          <ul>{rightSideFocus.cons.map((con) => {
+            return (
+              <li>{con}</li>
+            )
+          })}</ul>
+          <h4>Description</h4>
           <p>{rightSideFocus.blurb}</p>
 
         </div>
