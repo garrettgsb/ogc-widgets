@@ -17,8 +17,8 @@ const LeftSideData = ({ items, setRightSideFocus, rightSideFocus, updateSelected
   return (
     <aside className='one-third'>
       {items.map((item) => {
-        console.log("item: ", item);
-        console.log("selections", selections)
+        // console.log("item: ", item);
+        // console.log("selections", selections)
         const isSelected = item === rightSideFocus ? "selected" : "";
         const isChosen = selections[item.title] ? "having-chosen" : "";
         const classList = ["menu-item", isSelected, isChosen].join(" ");
@@ -105,6 +105,25 @@ const PaneManagerWidget = () => {
   // get rid of chosenCategories
   const [chosenCategories, setChosenCategories] = useState([]);
   const [selections, setSelections] = useState([]);
+
+  // function getCategoryOfSelected(category, selections, appData){
+  //   filter by category = van;
+  //   filter by selections = {mystery: true, partywa: true}
+
+  //   return = [{mysterymachine object from appData}, {party wagon object from appData}]
+  //   //return an array objects that are a part of that category
+  // }
+
+  // function gCOS(c, s, a) {
+  //   return appData.filter(item => isInCategory(item, category) && isSelected(item, selections));
+  // }
+
+  // function computePrice(getCategorySelected) {
+  //   // take in set and appData
+  //   go over the obj and collect price
+  //   // sum the price for every item in the set
+  //   // return a total
+  // }
 
   function updateSelected(selection) {
     if (selections[selection]) {
