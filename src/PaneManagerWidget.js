@@ -2,8 +2,7 @@ import { useState } from 'react';
 import { data as appData, CATEGORIES as appCategories } from './appData.js';
 import SideBar from './components/SideBar';
 import BottomBar from './components/BottomBar';
-import aTeam from './assets/ateam.jpeg';
-import completeCategories from './selectors/selectors.js';
+// import aTeam from './assets/ateam.jpeg';
 
 const OneThirdTwoThirds = (props) => {
   return (
@@ -13,15 +12,21 @@ const OneThirdTwoThirds = (props) => {
   )
 }
 
-const LeftSideData = ({ items, setRightSideFocus, rightSideFocus, updateSelected }) => {
+const LeftSideData = ({ items, setRightSideFocus, rightSideFocus, updateSelected, selections }) => {
 
   return (
     <aside className='one-third'>
       {items.map((item) => {
-        const classList = item === rightSideFocus ? "menu-item selected" : "menu-item";
+        console.log("item: ", item);
+        console.log("selections", selections)
+        const isSelected = item === rightSideFocus ? "selected" : "";
+        const isChosen = selections[item.title] ? "having-chosen" : "";
+        const classList = ["menu-item", isSelected, isChosen].join(" ");
+        // const classList = item === rightSideFocus ? "menu-item selected" : "menu-item";
         return (
           <>
             <h3 className={classList} onClick={() => setRightSideFocus(item)}>{item.title}</h3>
+            <p>${item.price}</p>
             {/* <img src={aTeam} alt="The A Team" className="small-image" /> */}
             <button onClick={() => updateSelected(item.title)}>Add {item.title} to Project</button>
           </>
@@ -33,7 +38,6 @@ const LeftSideData = ({ items, setRightSideFocus, rightSideFocus, updateSelected
 
 const RightSideData = ({ rightSideFocus }) => {
   // console.log(rightSideFocus);
-  const procon = rightSideFocus.pros.concat(rightSideFocus.cons);
   return (
     <aside className='two-third'>
 
@@ -41,6 +45,7 @@ const RightSideData = ({ rightSideFocus }) => {
         <h1>Click for more info</h1> :
         <div>
           <h1>{rightSideFocus.title}</h1>
+          <p>${rightSideFocus.price}</p>
           <h4>Pros/Cons</h4>
           <ul className="attribute-list" >
             {rightSideFocus.pros.map((pro) => {
@@ -65,10 +70,10 @@ const RightSideData = ({ rightSideFocus }) => {
   )
 }
 
-const VansCategory = ({ items, rightSideFocus, setRightSideFocus, updateSelected }) => {
+const VansCategory = ({ items, rightSideFocus, setRightSideFocus, updateSelected, selections }) => {
   return (
     <OneThirdTwoThirds>
-      <LeftSideData items={items} setRightSideFocus={setRightSideFocus} rightSideFocus={rightSideFocus} updateSelected={updateSelected} />
+      <LeftSideData items={items} setRightSideFocus={setRightSideFocus} rightSideFocus={rightSideFocus} updateSelected={updateSelected} selections={selections} />
       <RightSideData rightSideFocus={rightSideFocus} />
 
     </OneThirdTwoThirds>
@@ -84,12 +89,12 @@ const WeaponsCategory = ({ items }) => (
 );
 
 // two types of selected; chosen and added to project
-const ContentArea = ({ items, updateSelected }) => {
+const ContentArea = ({ items, updateSelected, selections }) => {
   const [rightSideFocus, setRightSideFocus] = useState([]);
 
   return (
     <section className="content-area">
-      {true && <VansCategory items={items} rightSideFocus={rightSideFocus} setRightSideFocus={setRightSideFocus} updateSelected={updateSelected}></VansCategory>}
+      {true && <VansCategory items={items} rightSideFocus={rightSideFocus} setRightSideFocus={setRightSideFocus} updateSelected={updateSelected} selections={selections}></VansCategory>}
       {false && <WeaponsCategory items={items}></WeaponsCategory>}
     </section>
   )
@@ -100,8 +105,6 @@ const PaneManagerWidget = () => {
   // get rid of chosenCategories
   const [chosenCategories, setChosenCategories] = useState([]);
   const [selections, setSelections] = useState([]);
-
-
 
   function updateSelected(selection) {
     if (selections[selection]) {
@@ -117,8 +120,8 @@ const PaneManagerWidget = () => {
   return (
     <main className="layout-manager">
       {/* <p>{JSON.stringify(appData)}</p> */}
-      <SideBar categories={appCategories} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
-      <ContentArea items={items} updateSelected={updateSelected} />
+      <SideBar categories={appCategories} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} selections={selections} appData={appData} />
+      <ContentArea items={items} updateSelected={updateSelected} selections={selections} />
       <BottomBar appCategories={appCategories} chosenCategories={chosenCategories} selections={selections} />
     </main>
 

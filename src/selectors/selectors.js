@@ -1,8 +1,9 @@
-function completeCategories(selections, appCategories, appData) {
+function getCategoriesHavingChosen(selections, appData) {
   // const itemTitles = [];
   // still an object
   // itemTitles.selections.filter((selection) => selection);
   // const categoryList = [];
+  // console.log("selections: ", selections);
   const itemTitles = Object.entries(selections).filter(([key, val]) => val).map(([key, val]) => key);
 
   // make into a reduce
@@ -24,4 +25,4 @@ function garrettsCompleteCategories(selections, appCategories, appData) {
   return itemTitles.reduce((acc, title) => [...acc, ...appData.find((item) => item.title === title).categories], []);
 }
 
-export default completeCategories;
+export default getCategoriesHavingChosen;

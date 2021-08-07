@@ -12,6 +12,7 @@ export const data = [
     pros: ["stealth", "rocket launchers", "Mr. T"],
     cons: ["Mr. T's accent", "expensive"],
     blurb: "If you have a problem, if no one else can help, and if you can find them, maybe you can hire the A-Team",
+    price: 5000,
   },
   {
     categories: [CATEGORIES.vans],
@@ -20,6 +21,7 @@ export const data = [
     pros: ["Scooby", "snacks", "mystery solvers"],
     cons: ["grass", "a little too cheap", "poor stealthing abilities"],
     blurb: "It's mean, it's green, it's the mystery machine!... and it's a Ford Transit",
+    price: 1200,
   },
   {
     categories: [CATEGORIES.vans],
@@ -28,6 +30,7 @@ export const data = [
     pros: ["Nunchuks", "Swords", "Pizza"],
     cons: ["it's yellow", "fuel efficency"],
     blurb: "Turtles in a half shell... TURTLE POWER!",
+    price: 188487
   },
   {
     categories: [CATEGORIES.weapons],
@@ -35,7 +38,8 @@ export const data = [
     image: "https://imgur.com/gallery/B1SpX2Z",
     pros: ["BAM", "no accuracy required", "Like, no accuracy at all"],
     cons: ["expensive", "loud", "slow reload"],
-    blurb: "one stop problem solver"
+    blurb: "one stop problem solver",
+    price: 3487,
   },
   {
     categories: [CATEGORIES.weapons],
@@ -43,7 +47,8 @@ export const data = [
     image: "https://imgur.com/gallery/GJLKafT",
     pros: ["All of them", "fire", "throwing fire", "cool factor"],
     cons: ["None", "Range", "fuel economy", "diminishes visibility"],
-    blurb: "NIAHAHAHAHHA - Skeletor"
+    blurb: "NIAHAHAHAHHA - Skeletor",
+    price: 4632
   },
   {
     categories: [CATEGORIES.weapons],
@@ -51,15 +56,17 @@ export const data = [
     image: "https://imgur.com/gallery/WwooBND",
     pros: ["non-lethal", "price", "colour variety", "silent"],
     cons: ["non-lethal", "splatter",],
-    blurb: "I love the smell of fresh paint in the morning"
+    blurb: "I love the smell of fresh paint in the morning",
+    price: 65
   },
   {
     categories: [CATEGORIES.sensors],
-    title: "Paintball Gun",
+    title: "Predator Vision",
     image: "https://imgur.com/gallery/WwooBND",
-    pros: ["non-lethal", "price", "colour variety", "silent"],
-    cons: ["non-lethal", "splatter",],
-    blurb: "I love the smell of fresh paint in the morning"
+    pros: ["non-lethal", "sees all"],
+    cons: ["limited colours", "heavy breathing",],
+    blurb: "You're one ugly muthafokka",
+    price: 76592
   },
 ]
 
