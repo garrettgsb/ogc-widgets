@@ -1,13 +1,14 @@
 import { useState } from 'react';
 import { data as appData, CATEGORIES as appCategories } from './appData.js';
-import SideBar from './SideBar';
-import BottomBar from './BottomBar';
+import SideBar from './components/SideBar';
+import BottomBar from './components/BottomBar';
 import aTeam from './assets/ateam.jpeg';
+import completeCategories from './selectors/selectors.js';
 
 const OneThirdTwoThirds = (props) => {
   return (
     <main className='one-third-two-thirds'>
-      { props.children}
+      {props.children}
     </main>
   )
 }
@@ -32,28 +33,30 @@ const LeftSideData = ({ items, setRightSideFocus, rightSideFocus, updateSelected
 
 const RightSideData = ({ rightSideFocus }) => {
   // console.log(rightSideFocus);
+  const procon = rightSideFocus.pros.concat(rightSideFocus.cons);
   return (
     <aside className='two-third'>
 
-      { rightSideFocus.title === undefined ?
+      {rightSideFocus.title === undefined ?
         <h1>Click for more info</h1> :
         <div>
           <h1>{rightSideFocus.title}</h1>
-          <h4>Pros</h4>
-          <ul>{rightSideFocus.pros.map((pro) => {
-            return (
-              <li>{pro}</li>
-            )
-          })}</ul>
-          <h4>Cons</h4>
-          <ul>{rightSideFocus.cons.map((con) => {
-            return (
-              <li>{con}</li>
-            )
-          })}</ul>
+          <h4>Pros/Cons</h4>
+          <ul className="attribute-list" >
+            {rightSideFocus.pros.map((pro) => {
+              return (
+                <li className='pro'>{pro}</li>
+              )
+            })}
+            {rightSideFocus.cons.map((con) => {
+              return (
+                <li className='con'>{con}</li>
+              )
+            })}
+          </ul>
+          <ul className="cons"></ul>
           <h4>Description</h4>
           <p>{rightSideFocus.blurb}</p>
-
         </div>
 
       }
@@ -86,16 +89,19 @@ const ContentArea = ({ items, updateSelected }) => {
 
   return (
     <section className="content-area">
-      { true && <VansCategory items={items} rightSideFocus={rightSideFocus} setRightSideFocus={setRightSideFocus} updateSelected={updateSelected}></VansCategory>}
-      { false && <WeaponsCategory items={items}></WeaponsCategory>}
+      {true && <VansCategory items={items} rightSideFocus={rightSideFocus} setRightSideFocus={setRightSideFocus} updateSelected={updateSelected}></VansCategory>}
+      {false && <WeaponsCategory items={items}></WeaponsCategory>}
     </section>
   )
 }
 
 const PaneManagerWidget = () => {
   const [selectedCategory, setSelectedCategory] = useState(Object.values(appCategories)[0]);
+  // get rid of chosenCategories
   const [chosenCategories, setChosenCategories] = useState([]);
   const [selections, setSelections] = useState([]);
+
+
 
   function updateSelected(selection) {
     if (selections[selection]) {

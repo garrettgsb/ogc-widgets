@@ -1,6 +1,7 @@
 export const CATEGORIES = {
   vans: "Vans",
   weapons: "Weapons",
+  sensors: "Sensors"
 };
 
 export const data = [
@@ -46,6 +47,14 @@ export const data = [
   },
   {
     categories: [CATEGORIES.weapons],
+    title: "Paintball Gun",
+    image: "https://imgur.com/gallery/WwooBND",
+    pros: ["non-lethal", "price", "colour variety", "silent"],
+    cons: ["non-lethal", "splatter",],
+    blurb: "I love the smell of fresh paint in the morning"
+  },
+  {
+    categories: [CATEGORIES.sensors],
     title: "Paintball Gun",
     image: "https://imgur.com/gallery/WwooBND",
     pros: ["non-lethal", "price", "colour variety", "silent"],
