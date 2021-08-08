@@ -1,6 +1,5 @@
 const BottomBar = ({ appCategories, selections }) => {
 
-  const catgegoryList = Object.keys(appCategories);
   // const pillList = Object.values(selections.filter((selected) => { return selected === true }));
   const pillList = [];
   for (const [key, value] of Object.entries(selections)) {

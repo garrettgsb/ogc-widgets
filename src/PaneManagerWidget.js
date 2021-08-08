@@ -75,27 +75,16 @@ const VansCategory = ({ items, rightSideFocus, setRightSideFocus, updateSelected
     <OneThirdTwoThirds>
       <LeftSideData items={items} setRightSideFocus={setRightSideFocus} rightSideFocus={rightSideFocus} updateSelected={updateSelected} selections={selections} />
       <RightSideData rightSideFocus={rightSideFocus} />
-
     </OneThirdTwoThirds>
   )
 }
 
-// not being rendered yet
-const WeaponsCategory = ({ items }) => (
-  <OneThirdTwoThirds>
-    <LeftSideData items={items} />
-    <section className='two-third'></section>
-  </OneThirdTwoThirds>
-);
-
-// two types of selected; chosen and added to project
 const ContentArea = ({ items, updateSelected, selections }) => {
   const [rightSideFocus, setRightSideFocus] = useState([]);
 
   return (
     <section className="content-area">
-      {true && <VansCategory items={items} rightSideFocus={rightSideFocus} setRightSideFocus={setRightSideFocus} updateSelected={updateSelected} selections={selections}></VansCategory>}
-      {false && <WeaponsCategory items={items}></WeaponsCategory>}
+      <VansCategory items={items} rightSideFocus={rightSideFocus} setRightSideFocus={setRightSideFocus} updateSelected={updateSelected} selections={selections} />
     </section>
   )
 }
@@ -114,9 +103,7 @@ const PaneManagerWidget = () => {
   }
 
   function getSelectedItemsByCategory(category, selections, appData) {
-    // console.log("here");
     return appData.filter(item => matchesCategory(item, category) && isSelected(item, selections))
-    // return appData.filter(item => matchesCategory(item, category)).filter(item => isSelected(item, selections))
 
   }
 
@@ -135,25 +122,6 @@ const PaneManagerWidget = () => {
     }
     return false;
   }
-
-  // function getCategoryOfSelected(category, selections, appData){
-  //   filter by category = van;
-  //   filter by selections = {mystery: true, partywa: true}
-
-  //   return = [{mysterymachine object from appData}, {party wagon object from appData}]
-  //   //return an array objects that are a part of that category
-  // }
-
-  // function gCOS(c, s, a) {
-  //   return appData.filter(item => isInCategory(item, category) && isSelected(item, selections));
-  // }
-
-  // function computePrice(getCategorySelected) {
-  //   // take in set and appData
-  //   go over the obj and collect price
-  //   // sum the price for every item in the set
-  //   // return a total
-  // }
 
   function updateSelected(selection) {
     if (selections[selection]) {
