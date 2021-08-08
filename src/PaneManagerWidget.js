@@ -104,6 +104,31 @@ const PaneManagerWidget = () => {
   const [selectedCategory, setSelectedCategory] = useState(Object.values(appCategories)[0]);
   const [selections, setSelections] = useState([]);
 
+  function getPriceByCategory(category, selections, appData) {
+    const selectedItemsInCategory = getSelectedItemsByCategory(category, selections, appData)
+    return selectedItemsInCategory.reduce((acc, item) => {
+      return acc + item.price;
+    }, 0);
+  }
+
+  function getSelectedItemsByCategory(category, selections, appData) {
+    return appData.filter(item => matchesCategory(item, category) && isSelected(item, selections))
+  }
+
+  function matchesCategory(item, category) {
+    if (item.categories === category) {
+      return true
+    }
+    return false;
+  }
+
+  function isSelected(item, selections) {
+    if (selections[item.title]) {
+      return true;
+    }
+    return false;
+  }
+
   // function getCategoryOfSelected(category, selections, appData){
   //   filter by category = van;
   //   filter by selections = {mystery: true, partywa: true}
