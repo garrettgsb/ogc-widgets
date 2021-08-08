@@ -102,8 +102,6 @@ const ContentArea = ({ items, updateSelected, selections }) => {
 
 const PaneManagerWidget = () => {
   const [selectedCategory, setSelectedCategory] = useState(Object.values(appCategories)[0]);
-  // get rid of chosenCategories
-  const [chosenCategories, setChosenCategories] = useState([]);
   const [selections, setSelections] = useState([]);
 
   // function getCategoryOfSelected(category, selections, appData){
@@ -141,7 +139,7 @@ const PaneManagerWidget = () => {
       {/* <p>{JSON.stringify(appData)}</p> */}
       <SideBar categories={appCategories} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} selections={selections} appData={appData} />
       <ContentArea items={items} updateSelected={updateSelected} selections={selections} />
-      <BottomBar appCategories={appCategories} chosenCategories={chosenCategories} selections={selections} />
+      <BottomBar appCategories={appCategories} selections={selections} />
     </main>
 
 
