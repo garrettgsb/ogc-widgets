@@ -105,24 +105,31 @@ const PaneManagerWidget = () => {
   const [selections, setSelections] = useState([]);
 
   function getPriceByCategory(category, selections, appData) {
-    const selectedItemsInCategory = getSelectedItemsByCategory(category, selections, appData)
+    const selectedItemsInCategory = getSelectedItemsByCategory(category, selections, appData);
+    console.log(selectedItemsInCategory);
+
     return selectedItemsInCategory.reduce((acc, item) => {
       return acc + item.price;
     }, 0);
   }
 
   function getSelectedItemsByCategory(category, selections, appData) {
+    // console.log("here");
     return appData.filter(item => matchesCategory(item, category) && isSelected(item, selections))
+    // return appData.filter(item => matchesCategory(item, category)).filter(item => isSelected(item, selections))
+
   }
 
   function matchesCategory(item, category) {
-    if (item.categories === category) {
+    console.log("matches", category, item.categories[0]);
+    if (item.categories[0] === category) {
       return true
     }
     return false;
   }
 
   function isSelected(item, selections) {
+    console.log("isSelected");
     if (selections[item.title]) {
       return true;
     }
@@ -151,10 +158,8 @@ const PaneManagerWidget = () => {
   function updateSelected(selection) {
     if (selections[selection]) {
       setSelections({ ...selections, [selection]: !selections[selection] });
-      // console.log(selections);
     } else {
       setSelections({ ...selections, [selection]: true });
-      // console.log(selections);
     };
   }
 
@@ -162,7 +167,7 @@ const PaneManagerWidget = () => {
   return (
     <main className="layout-manager">
       {/* <p>{JSON.stringify(appData)}</p> */}
-      <SideBar categories={appCategories} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} selections={selections} appData={appData} />
+      <SideBar categories={appCategories} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} selections={selections} appData={appData} getPriceByCategory={getPriceByCategory} />
       <ContentArea items={items} updateSelected={updateSelected} selections={selections} />
       <BottomBar appCategories={appCategories} selections={selections} />
     </main>
