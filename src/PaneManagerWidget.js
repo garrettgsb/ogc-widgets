@@ -137,11 +137,10 @@ const PaneManagerWidget = () => {
       {/* <p>{JSON.stringify(appData)}</p> */}
       <SideBar categories={appCategories} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} selections={selections} appData={appData} getPriceByCategory={getPriceByCategory} />
       <ContentArea items={items} updateSelected={updateSelected} selections={selections} />
-      <BottomBar appCategories={appCategories} selections={selections} />
+      <BottomBar selections={selections} appData={appData} />
     </main>
-
-
   )
 }
 
 export default PaneManagerWidget;
+
