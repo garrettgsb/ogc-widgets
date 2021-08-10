@@ -102,3 +102,16 @@
   margin-right: 10px;
   content: "❌";
 }
+
+.parent-bar {
+  width: 80px;
+  height: 10px;
+  background-color: brown;
+}
+
+.child-bar {
+  height: 100%;
+  padding: 0px;
+  margin: 0px;
+  background-color: cyan;
+}

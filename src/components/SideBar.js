@@ -4,7 +4,6 @@ const SideBar = ({ categories, selectedCategory, setSelectedCategory, selections
 
   const categoriesHavingChosen = getCategoriesHavingChosen(selections, appData);
   // console.log(categoriesHavingChosen);
-
   return (
     <aside className="sidebar">
       {

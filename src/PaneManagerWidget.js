@@ -108,19 +108,22 @@ const PaneManagerWidget = () => {
   }
 
   function matchesCategory(item, category) {
-    console.log("matches", category, item.categories[0]);
-    if (item.categories[0] === category) {
-      return true
-    }
-    return false;
+    // console.log("matches", category, item.categories[0]);
+    // if (item.categories[0] === category) {
+    //   return true
+    // }
+    // return false;
+    return item.categories[0] === category;
   }
 
   function isSelected(item, selections) {
-    console.log("isSelected");
-    if (selections[item.title]) {
-      return true;
-    }
-    return false;
+    // if (selections[item.title]) {
+    //   return true;
+    // }
+    // return false;
+    return Boolean(selections[item.title]);
+    // return !!selections[item.title];
+
   }
 
   function updateSelected(selection) {
