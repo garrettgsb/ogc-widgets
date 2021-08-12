@@ -108,7 +108,6 @@ const PaneManagerWidget = () => {
   }
 
   function matchesCategory(item, category) {
-    // console.log("matches", category, item.categories[0]);
     // if (item.categories[0] === category) {
     //   return true
     // }
