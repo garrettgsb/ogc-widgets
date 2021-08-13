@@ -21,7 +21,6 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
-  /* justify-content: center; */
 
 }
 
@@ -36,8 +35,9 @@
   grid-row: 1
 }
 
-.item-pills {
+.item-pill-box {
   grid-column: 2/3;
+  grid-row: 2/4;
   /* grid-row: 2/4; */
   /* margin-top: 5px; */
 }

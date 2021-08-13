@@ -30,13 +30,15 @@ const BottomBar = ({ selections, appData }) => {
       </aside>
 
       <h1 className="item-pill-title">Item Pills</h1>
-      {
-        pillList.map((pill) => {
-          return (
-            <p className="item-pills">{pill}</p>
-          )
-        })
-      }
+      <div className="item-pill-box">
+        {
+          pillList.map((pill) => {
+            return (
+              <p >{pill}</p>
+            )
+          })
+        }
+      </div>
 
 
     </div>
