@@ -33,6 +33,15 @@ export const data = [
     price: 188487
   },
   {
+    categories: [CATEGORIES.vans],
+    title: "Moody Spooky Van",
+    image: "https://static.wikia.nocookie.net/hotwheels/images/b/b5/2020NM26_%28Large%29.JPG/revision/latest/scale-to-width-down/1000?cb=20200329024016",
+    pros: ["invokes a sense of hmmmm...", "mysterious", "conjures ominous music"],
+    cons: ["obviously up to something", "fuel efficency"],
+    blurb: "This tall, dark, and handsome van can easily slip into the shadows and reappear on a whim. If you can't see it, it can see you",
+    price: 14467
+  },
+  {
     categories: [CATEGORIES.weapons],
     title: "Rocket Launcher",
     image: "https://imgur.com/gallery/B1SpX2Z",

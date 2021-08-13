@@ -21,23 +21,24 @@ const BottomBar = ({ selections, appData }) => {
   }
 
   return (
-    <div>
-      <h1>Total ${sumSelectedPrices(appData, selections)}</h1>
-      <ProgressBar value={40} max={80} />
-      <ProgressBar value={10} max={80} />
-      <ProgressBar value={70} max={80} />
-
-      <aside className="bottombar">
-        <h1>Item Pills</h1>
-        {
-          pillList.map((pill) => {
-            return (
-              <p>{pill}</p>
-            )
-          })
-        }
-
+    <div className="bottombar">
+      <h1 className="total-price">Total ${sumSelectedPrices(appData, selections)}</h1>
+      <aside className="progress-bar">
+        <ProgressBar value={40} max={80} />
+        <ProgressBar value={10} max={80} />
+        <ProgressBar value={70} max={80} />
       </aside>
+
+      <h1 className="item-pill-title">Item Pills</h1>
+      {
+        pillList.map((pill) => {
+          return (
+            <p className="item-pills">{pill}</p>
+          )
+        })
+      }
+
+
     </div>
   )
 }
