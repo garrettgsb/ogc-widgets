@@ -8,10 +8,6 @@ const SideBar = ({ categories, selectedCategory, setSelectedCategory, selections
     <aside className="sidebar">
       {
         Object.values(categories).map((category) => {
-          // const classList = selectedCategory === category ? "menu-item selected" : "menu-item";
-          // let classList = 'menu-item';
-          // classList += selectedCategory === category ? ' selected' : '';
-          // classList += categoriesHavingChosen.includes(category) ? ' having-chosen' : '';
           const selectedClass = selectedCategory === category ? 'selected' : '';
           const hasChosenClass = categoriesHavingChosen.includes(category) ? 'having-chosen' : '';
           const classList = ['menu-item', selectedClass, hasChosenClass].join(' ');

@@ -38,7 +38,6 @@ const LeftSideData = ({ items, setRightSideFocus, rightSideFocus, updateSelected
 }
 
 const RightSideData = ({ rightSideFocus }) => {
-  // console.log(rightSideFocus);
   return (
     <aside className='two-third'>
 
@@ -64,9 +63,7 @@ const RightSideData = ({ rightSideFocus }) => {
           <h4>Description</h4>
           <p>{rightSideFocus.blurb}</p>
         </div>
-
       }
-
     </aside>
   )
 }
