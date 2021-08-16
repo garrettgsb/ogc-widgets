@@ -92,6 +92,7 @@ const ContentArea = ({ items, updateSelected, selections }) => {
 const PaneManagerWidget = () => {
   const [selectedCategory, setSelectedCategory] = useState(Object.values(appCategories)[0]);
   const [selections, setSelections] = useState([]);
+  const [title, setTitle] = useState("Your Awesome Van");
 
   function getPriceByCategory(category, selections, appData) {
     const selectedItemsInCategory = getSelectedItemsByCategory(category, selections, appData);
@@ -121,7 +122,7 @@ const PaneManagerWidget = () => {
     // }
     // return false;
     return Boolean(selections[item.title]);
-    // return !!selections[item.title];
+    // return !!selections[item.title]; // convert undefined to true then to false
 
   }
 
@@ -133,10 +134,16 @@ const PaneManagerWidget = () => {
     };
   }
 
+  function updateTitle(e) {
+    setTitle(e);
+  }
+
   const items = appData.filter((item) => item.categories.includes(selectedCategory));
   return (
     <main className="layout-manager">
       {/* <p>{JSON.stringify(appData)}</p> */}
+      <h1>{title}</h1>
+      <input type="text" style={{ zIndex: 1 }} onChange={(e) => updateTitle(e.target.value)} />
       <SideBar categories={appCategories} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} selections={selections} appData={appData} getPriceByCategory={getPriceByCategory} />
       <ContentArea items={items} updateSelected={updateSelected} selections={selections} />
       <BottomBar selections={selections} appData={appData} />
