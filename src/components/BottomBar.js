@@ -1,7 +1,10 @@
 import ProgressBar from './ProgressBar';
+import { UserInputContext } from '../contexts';
+import { useContext } from 'react';
+
 
 const BottomBar = ({ selections, appData }) => {
-
+  const { title } = useContext(UserInputContext);
   // const pillList = Object.values(selections.filter((selected) => { return selected === true }));
   const pillList = [];
   for (const [key, value] of Object.entries(selections)) {
@@ -22,6 +25,7 @@ const BottomBar = ({ selections, appData }) => {
 
   return (
     <div className="bottombar">
+      <p>{title}</p>
       <h1 className="total-price">Total ${sumSelectedPrices(appData, selections)}</h1>
       <aside className="progress-bar">
         <ProgressBar value={40} max={80} />

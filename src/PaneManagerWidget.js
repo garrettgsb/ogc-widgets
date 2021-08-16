@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { data as appData, CATEGORIES as appCategories } from './appData.js';
 import SideBar from './components/SideBar';
 import BottomBar from './components/BottomBar';
+import { UserInputContext } from './contexts.js';
 // import aTeam from './assets/ateam.jpeg';
 
 const OneThirdTwoThirds = (props) => {
@@ -140,14 +141,16 @@ const PaneManagerWidget = () => {
 
   const items = appData.filter((item) => item.categories.includes(selectedCategory));
   return (
-    <main className="layout-manager">
-      {/* <p>{JSON.stringify(appData)}</p> */}
-      <h1>{title}</h1>
-      <input type="text" style={{ zIndex: 1 }} onChange={(e) => updateTitle(e.target.value)} />
-      <SideBar categories={appCategories} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} selections={selections} appData={appData} getPriceByCategory={getPriceByCategory} />
-      <ContentArea items={items} updateSelected={updateSelected} selections={selections} />
-      <BottomBar selections={selections} appData={appData} />
-    </main>
+    <UserInputContext.Provider value={{ title }}>
+      <main className="layout-manager">
+        {/* <p>{JSON.stringify(appData)}</p> */}
+        <h1>{title}</h1>
+        <input type="text" style={{ zIndex: 1 }} onChange={(e) => updateTitle(e.target.value)} />
+        <SideBar categories={appCategories} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} selections={selections} appData={appData} getPriceByCategory={getPriceByCategory} />
+        <ContentArea items={items} updateSelected={updateSelected} selections={selections} />
+        <BottomBar selections={selections} appData={appData} />
+      </main>
+    </UserInputContext.Provider>
   )
 }
 
