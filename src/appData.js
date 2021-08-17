@@ -1,8 +1,8 @@
 export const CATEGORIES = {
+  personalize: "Personalize",
   vans: "Vans",
   weapons: "Weapons",
   sensors: "Sensors",
-  personalize: "Personalize"
 };
 // add userinput category and to display new input compnent instead of van categories
 export const data = [

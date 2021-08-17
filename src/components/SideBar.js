@@ -19,8 +19,13 @@ const SideBar = ({ categories, selectedCategory, setSelectedCategory, selections
           return (
             <>
               <h3 className={classList} onClick={() => setSelectedCategory(category)} >{category}</h3>
-              {/* <p style={{ margin: 0, padding: 0 }}><small style={{ margin: 0, padding: 0 }}>${() => getPricebyCatagory(category, selections, appData)} ({count} selected)</small></p> */}
-              <p style={{ margin: 0, padding: 0 }}><small style={{ margin: 0, padding: 0 }}>${categoryPrice} ({count} selected)</small></p>
+              {
+                category === "Personalize" ?
+                  <small>Enter Project Info</small>
+                  :
+                  <p style={{ margin: 0, padding: 0 }}><small style={{ margin: 0, padding: 0 }}>${categoryPrice} ({count} selected)</small></p>
+              }
+              {/* <p style={{ margin: 0, padding: 0 }}><small style={{ margin: 0, padding: 0 }}>${categoryPrice} ({count} selected)</small></p> */}
 
             </>
           );

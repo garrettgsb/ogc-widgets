@@ -111,6 +111,7 @@ const ContentArea = ({ items, updateSelected, selections }) => {
 
 const PaneManagerWidget = () => {
   const [selectedCategory, setSelectedCategory] = useState(Object.values(appCategories)[0]);
+  // Another context for selections
   const [selections, setSelections] = useState([]);
   const [title, setTitle] = useState("Your Awesome Van");
 
@@ -163,7 +164,6 @@ const PaneManagerWidget = () => {
     <UserInputContext.Provider value={{ title, selectedCategory, updateTitle }}>
       <main className="layout-manager">
         {/* <p>{JSON.stringify(appData)}</p> */}
-
         <SideBar categories={appCategories} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} selections={selections} appData={appData} getPriceByCategory={getPriceByCategory} />
         <ContentArea items={items} updateSelected={updateSelected} selections={selections} />
         <BottomBar selections={selections} appData={appData} />
