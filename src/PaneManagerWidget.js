@@ -79,15 +79,23 @@ const VansCategory = ({ items, rightSideFocus, setRightSideFocus, updateSelected
 }
 
 const Personalize = () => {
+  const { title, updateTitle } = useContext(UserInputContext);
   return (
-    <h1>Hello</h1>
+    <div>
+      <h1>Hello,</h1>
+      <h1>{title}</h1>
+      <h4>Project Name</h4>
+      <input type="text" style={{ zIndex: 1 }} onChange={(e) => updateTitle(e.target.value)} />
+      <h4>Budget</h4>
+      <input type="integer" />
+      <p>offgrid?(y/n), terrain, typical trip length, full build?, </p>
+    </div>
   )
 }
 
 const ContentArea = ({ items, updateSelected, selections }) => {
   const [rightSideFocus, setRightSideFocus] = useState([]);
   const { selectedCategory } = useContext(UserInputContext);
-  console.log("currentCategory: ", selectedCategory);
 
   return (
     <section className="content-area">
@@ -152,11 +160,10 @@ const PaneManagerWidget = () => {
 
   const items = appData.filter((item) => item.categories.includes(selectedCategory));
   return (
-    <UserInputContext.Provider value={{ title, selectedCategory }}>
+    <UserInputContext.Provider value={{ title, selectedCategory, updateTitle }}>
       <main className="layout-manager">
         {/* <p>{JSON.stringify(appData)}</p> */}
-        <h1>{title}</h1>
-        <input type="text" style={{ zIndex: 1 }} onChange={(e) => updateTitle(e.target.value)} />
+
         <SideBar categories={appCategories} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} selections={selections} appData={appData} getPriceByCategory={getPriceByCategory} />
         <ContentArea items={items} updateSelected={updateSelected} selections={selections} />
         <BottomBar selections={selections} appData={appData} />
