@@ -3,6 +3,7 @@ import { data as appData, CATEGORIES as appCategories } from './appData.js';
 import SideBar from './components/SideBar';
 import BottomBar from './components/BottomBar';
 import { UserInputContext } from './contexts.js';
+import { useContext } from 'react';
 // import aTeam from './assets/ateam.jpeg';
 
 const OneThirdTwoThirds = (props) => {
@@ -77,12 +78,25 @@ const VansCategory = ({ items, rightSideFocus, setRightSideFocus, updateSelected
   )
 }
 
+const Personalize = () => {
+  return (
+    <h1>Hello</h1>
+  )
+}
+
 const ContentArea = ({ items, updateSelected, selections }) => {
   const [rightSideFocus, setRightSideFocus] = useState([]);
+  const { selectedCategory } = useContext(UserInputContext);
+  console.log("currentCategory: ", selectedCategory);
 
   return (
     <section className="content-area">
-      <VansCategory items={items} rightSideFocus={rightSideFocus} setRightSideFocus={setRightSideFocus} updateSelected={updateSelected} selections={selections} />
+      {
+        selectedCategory === "Personalize" ?
+          <Personalize />
+          :
+          <VansCategory items={items} rightSideFocus={rightSideFocus} setRightSideFocus={setRightSideFocus} updateSelected={updateSelected} selections={selections} />
+      }
     </section>
   )
 }
@@ -138,7 +152,7 @@ const PaneManagerWidget = () => {
 
   const items = appData.filter((item) => item.categories.includes(selectedCategory));
   return (
-    <UserInputContext.Provider value={{ title }}>
+    <UserInputContext.Provider value={{ title, selectedCategory }}>
       <main className="layout-manager">
         {/* <p>{JSON.stringify(appData)}</p> */}
         <h1>{title}</h1>

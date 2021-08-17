@@ -1,9 +1,10 @@
 export const CATEGORIES = {
   vans: "Vans",
   weapons: "Weapons",
-  sensors: "Sensors"
+  sensors: "Sensors",
+  personalize: "Personalize"
 };
-
+// add userinput category and to display new input compnent instead of van categories
 export const data = [
   {
     categories: [CATEGORIES.vans],
