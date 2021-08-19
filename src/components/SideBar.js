@@ -25,8 +25,6 @@ const SideBar = ({ categories, selectedCategory, setSelectedCategory, selections
                   :
                   <p style={{ margin: 0, padding: 0 }}><small style={{ margin: 0, padding: 0 }}>${categoryPrice} ({count} selected)</small></p>
               }
-              {/* <p style={{ margin: 0, padding: 0 }}><small style={{ margin: 0, padding: 0 }}>${categoryPrice} ({count} selected)</small></p> */}
-
             </>
           );
         })
