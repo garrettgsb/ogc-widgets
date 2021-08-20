@@ -4,9 +4,10 @@ import { useContext } from 'react';
 
 
 const BottomBar = ({ selections, appData }) => {
-  const { title } = useContext(UserInputContext);
+  const { title, budget } = useContext(UserInputContext);
   // const pillList = Object.values(selections.filter((selected) => { return selected === true }));
   const pillList = [];
+  const currentCost = sumSelectedPrices(appData, selections);
   for (const [key, value] of Object.entries(selections)) {
     if (value === true) {
       pillList.push(key);
@@ -25,15 +26,16 @@ const BottomBar = ({ selections, appData }) => {
 
   return (
     <div className="bottombar">
-      <p>{title}</p>
-      <h1 className="total-price">Total ${sumSelectedPrices(appData, selections)}</h1>
+      <h2>{title}</h2>
+      <h3>${budget}</h3>
+      <h1 className="total-price">Total ${currentCost}</h1>
       <aside className="progress-bar">
-        <ProgressBar value={40} max={80} />
+        <ProgressBar value={currentCost} max={budget} />
         <ProgressBar value={10} max={80} />
         <ProgressBar value={70} max={80} />
       </aside>
 
-      <h1 className="item-pill-title">Item Pills</h1>
+      <h2 className="item-pill-title">Item Pills</h2>
       <div className="item-pill-box">
         {
           pillList.map((pill) => {

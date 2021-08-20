@@ -10,7 +10,6 @@
   background-color: crimson;
   grid-column: 2/-1;
   grid-row: 1/2;
-
 }
 
 .bottombar {
@@ -157,3 +156,8 @@
   margin: 0px;
   background-color: cyan;
 }
+
+.over-price::after {
+  content: "💰"
+}
+ 

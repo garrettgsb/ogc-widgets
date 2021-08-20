@@ -100,6 +100,7 @@ const PaneManagerWidget = () => {
   // Another context for selections
   const [selections, setSelections] = useState([]);
   const [title, setTitle] = useState("Your Awesome Van");
+  const [budget, setBudget] = useState(60000);
 
   function getPriceByCategory(category, selections, appData) {
     const selectedItemsInCategory = getSelectedItemsByCategory(category, selections, appData);
@@ -112,7 +113,6 @@ const PaneManagerWidget = () => {
 
   function getSelectedItemsByCategory(category, selections, appData) {
     return appData.filter(item => matchesCategory(item, category) && isSelected(item, selections))
-
   }
 
   function matchesCategory(item, category) {
@@ -145,9 +145,13 @@ const PaneManagerWidget = () => {
     setTitle(e);
   }
 
+  function updateBudget(e) {
+    setBudget(e);
+  }
+
   const items = appData.filter((item) => item.categories.includes(selectedCategory));
   return (
-    <UserInputContext.Provider value={{ title, selectedCategory, updateTitle }}>
+    <UserInputContext.Provider value={{ title, selectedCategory, updateTitle, budget, updateBudget }}>
       <main className="layout-manager">
         {/* <p>{JSON.stringify(appData)}</p> */}
         <SideBar categories={appCategories} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} selections={selections} appData={appData} getPriceByCategory={getPriceByCategory} />
