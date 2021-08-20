@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { data as appData, CATEGORIES as appCategories } from './appData.js';
 import SideBar from './components/SideBar';
 import BottomBar from './components/BottomBar';
+import Personalize from './components/Personalize.js';
 import { UserInputContext } from './contexts.js';
 import { useContext } from 'react';
 // import aTeam from './assets/ateam.jpeg';
@@ -75,21 +76,6 @@ const VansCategory = ({ items, rightSideFocus, setRightSideFocus, updateSelected
       <LeftSideData items={items} setRightSideFocus={setRightSideFocus} rightSideFocus={rightSideFocus} updateSelected={updateSelected} selections={selections} />
       <RightSideData rightSideFocus={rightSideFocus} />
     </OneThirdTwoThirds>
-  )
-}
-
-const Personalize = () => {
-  const { title, updateTitle } = useContext(UserInputContext);
-  return (
-    <div>
-      <h1>Hello,</h1>
-      <h1>{title}</h1>
-      <h4>Project Name</h4>
-      <input type="text" style={{ zIndex: 1 }} onChange={(e) => updateTitle(e.target.value)} />
-      <h4>Budget</h4>
-      <input type="integer" />
-      <p>offgrid?(y/n), terrain, typical trip length, full build?, </p>
-    </div>
   )
 }
 
