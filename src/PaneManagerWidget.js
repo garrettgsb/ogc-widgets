@@ -150,7 +150,7 @@ const PaneManagerWidget = () => {
 
   const items = appData.filter((item) => item.categories.includes(selectedCategory));
   return (
-    <UserInputContext.Provider value={{ title, selectedCategory, updateTitle, budget, updateBudget }}>
+    <UserInputContext.Provider value={{ title, selectedCategory, updateTitle, budget, updateBudget, updateSelected }}>
       <main className="layout-manager">
         {/* <p>{JSON.stringify(appData)}</p> */}
         <SideBar categories={appCategories} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} selections={selections} appData={appData} getPriceByCategory={getPriceByCategory} />

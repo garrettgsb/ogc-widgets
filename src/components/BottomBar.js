@@ -4,7 +4,7 @@ import { useContext } from 'react';
 
 
 const BottomBar = ({ selections, appData }) => {
-  const { title, budget } = useContext(UserInputContext);
+  const { title, budget, updateSelected } = useContext(UserInputContext);
   // const pillList = Object.values(selections.filter((selected) => { return selected === true }));
   const pillList = [];
   const currentCost = sumSelectedPrices(appData, selections);
@@ -40,7 +40,7 @@ const BottomBar = ({ selections, appData }) => {
         {
           pillList.map((pill) => {
             return (
-              <p >{pill}</p>
+              <p onClick={() => updateSelected(pill)}>{pill}  X </p>
             )
           })
         }
