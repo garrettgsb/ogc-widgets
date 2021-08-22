@@ -25,7 +25,6 @@ const LeftSideData = ({ items, setRightSideFocus, rightSideFocus, updateSelected
         const isSelected = item === rightSideFocus ? "selected" : "";
         const isChosen = selections[item.title] ? "having-chosen" : "";
         const classList = ["menu-item", isSelected, isChosen].join(" ");
-        // const classList = item === rightSideFocus ? "menu-item selected" : "menu-item";
         return (
           <>
             <h3 className={classList} onClick={() => setRightSideFocus(item)}>{item.title}</h3>
