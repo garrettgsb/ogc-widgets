@@ -15,6 +15,7 @@ const BottomBar = ({ selections, appData }) => {
   };
 
   function sumSelectedPrices(appData, selections) {
+    // notes
     // let total = 0;
     // appData.forEach(item => {
     //   if (selections[item.title]) {
@@ -45,8 +46,6 @@ const BottomBar = ({ selections, appData }) => {
           })
         }
       </div>
-
-
     </div>
   )
 }
