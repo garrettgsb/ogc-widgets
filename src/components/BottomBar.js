@@ -2,7 +2,6 @@ import ProgressBar from './ProgressBar';
 import { UserInputContext } from '../contexts';
 import { useContext } from 'react';
 
-
 const BottomBar = ({ selections, appData }) => {
   const { title, budget, updateSelected } = useContext(UserInputContext);
   // const pillList = Object.values(selections.filter((selected) => { return selected === true }));

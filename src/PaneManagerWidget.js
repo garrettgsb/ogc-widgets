@@ -96,7 +96,6 @@ const ContentArea = ({ items, updateSelected, selections }) => {
 
 const PaneManagerWidget = () => {
   const [selectedCategory, setSelectedCategory] = useState(Object.values(appCategories)[0]);
-  // Another context for selections
   const [selections, setSelections] = useState([]);
   const [title, setTitle] = useState("Your Awesome Van");
   const [budget, setBudget] = useState(60000);
