@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { UserInputContext } from "../contexts";
 
 const Personalize = () => {
-  const { title, updateTitle, budget, updateBudget } = useContext(UserInputContext);
+  const { title, updateTitle, budget, updateBudget, isOffgrid, updateIsOffgrid } = useContext(UserInputContext);
   return (
     <div>
       <h1>Hello,</h1>
@@ -11,7 +11,16 @@ const Personalize = () => {
       <input type="text" style={{ zIndex: 1 }} onChange={(e) => updateTitle(e.target.value)} />
       <h4>Budget ${budget}</h4>
       <input type="text" onChange={(e) => updateBudget(e.target.value)} />
-      <p>offgrid?(y/n), terrain, typical trip length, full build?, </p>
+      <h4>Offgrid?</h4>
+      <label>
+        <input type="radio" checked={isOffgrid === "yes"} value="yes" onChange={(e) => updateIsOffgrid(e.target.value)} />
+        Yes
+      </label>
+      <label>
+        <input type="radio" checked={isOffgrid === "no"} value="no" onChange={(e) => updateIsOffgrid(e.target.value)} />
+        No
+      </label>
+      <p>terrain, typical trip length, full build?, </p>
     </div>
   )
 }

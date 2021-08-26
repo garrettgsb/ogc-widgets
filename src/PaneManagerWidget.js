@@ -99,6 +99,7 @@ const PaneManagerWidget = () => {
   const [selections, setSelections] = useState([]);
   const [title, setTitle] = useState("Your Awesome Van");
   const [budget, setBudget] = useState(60000);
+  const [isOffgrid, setIsOffgrid] = useState("yes");
 
   function getPriceByCategory(category, selections, appData) {
     const selectedItemsInCategory = getSelectedItemsByCategory(category, selections, appData);
@@ -147,9 +148,13 @@ const PaneManagerWidget = () => {
     setBudget(e);
   }
 
+  function updateIsOffgrid(e) {
+    setIsOffgrid(e);
+  }
+
   const items = appData.filter((item) => item.categories.includes(selectedCategory));
   return (
-    <UserInputContext.Provider value={{ title, selectedCategory, updateTitle, budget, updateBudget, updateSelected }}>
+    <UserInputContext.Provider value={{ title, selectedCategory, updateTitle, budget, updateBudget, updateSelected, isOffgrid, updateIsOffgrid }}>
       <main className="layout-manager">
         {/* <p>{JSON.stringify(appData)}</p> */}
         <SideBar categories={appCategories} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} selections={selections} appData={appData} getPriceByCategory={getPriceByCategory} />
