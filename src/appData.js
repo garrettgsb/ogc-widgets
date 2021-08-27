@@ -50,6 +50,7 @@ export const data = [
     cons: ["expensive", "loud", "slow reload"],
     blurb: "one stop problem solver",
     price: 3487,
+    options: [{ title: "equipment", price: 3487 }, { title: "Assembly", price: 3000 }, { title: "Hole Cut", price: 4000 }],
   },
   {
     categories: [CATEGORIES.weapons],

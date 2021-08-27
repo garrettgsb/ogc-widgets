@@ -96,7 +96,7 @@ const ContentArea = ({ items, updateSelected, selections }) => {
 
 const PaneManagerWidget = () => {
   const [selectedCategory, setSelectedCategory] = useState(Object.values(appCategories)[0]);
-  const [selections, setSelections] = useState([]);
+  const [selections, setSelections] = useState({});
   const [title, setTitle] = useState("Your Awesome Van");
   const [budget, setBudget] = useState(60000);
   const [isOffgrid, setIsOffgrid] = useState("yes");
@@ -129,7 +129,6 @@ const PaneManagerWidget = () => {
     // return false;
     return Boolean(selections[item.title]);
     // return !!selections[item.title]; // convert undefined to true then to false
-
   }
 
   function updateSelected(selection) {
