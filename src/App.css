@@ -155,9 +155,12 @@
   padding: 0px;
   margin: 0px;
   background-color: cyan;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .over-price::after {
-  content: "💰"
+  content: "💰⚠️";
+  margin: 0 4px
 }
  

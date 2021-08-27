@@ -69,7 +69,7 @@ const RightSideData = ({ rightSideFocus }) => {
   )
 }
 
-const VansCategory = ({ items, rightSideFocus, setRightSideFocus, updateSelected, selections }) => {
+const CategoryDetails = ({ items, rightSideFocus, setRightSideFocus, updateSelected, selections }) => {
   return (
     <OneThirdTwoThirds>
       <LeftSideData items={items} setRightSideFocus={setRightSideFocus} rightSideFocus={rightSideFocus} updateSelected={updateSelected} selections={selections} />
@@ -88,7 +88,7 @@ const ContentArea = ({ items, updateSelected, selections }) => {
         selectedCategory === "Personalize" ?
           <Personalize />
           :
-          <VansCategory items={items} rightSideFocus={rightSideFocus} setRightSideFocus={setRightSideFocus} updateSelected={updateSelected} selections={selections} />
+          <CategoryDetails items={items} rightSideFocus={rightSideFocus} setRightSideFocus={setRightSideFocus} updateSelected={updateSelected} selections={selections} />
       }
     </section>
   )
