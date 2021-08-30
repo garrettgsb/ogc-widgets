@@ -27,9 +27,9 @@ const BottomBar = ({ selections, appData }) => {
   return (
     <div className="bottombar">
       <h2>{title}</h2>
-      <h3>${budget}</h3>
       <h1 className="total-price">Total ${currentCost}</h1>
       <aside className="progress-bar">
+        <p className="budget-tracker">${currentCost} / ${budget}</p>
         <ProgressBar value={currentCost} max={budget} />
         <ProgressBar value={20} max={80} />
         <ProgressBar value={70} max={80} />

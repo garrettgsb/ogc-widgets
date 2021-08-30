@@ -143,6 +143,11 @@
   content: "❌";
 }
 
+.budget-tracker {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .parent-bar {
   width: 100%;
   height: 25px;
