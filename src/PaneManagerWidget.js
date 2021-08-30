@@ -103,7 +103,7 @@ const PaneManagerWidget = () => {
 
   function getPriceByCategory(category, selections, appData) {
     const selectedItemsInCategory = getSelectedItemsByCategory(category, selections, appData);
-    console.log(selectedItemsInCategory);
+    // console.log(selectedItemsInCategory);
 
     return selectedItemsInCategory.reduce((acc, item) => {
       return acc + item.price;

@@ -79,5 +79,15 @@ export const data = [
     blurb: "You're one ugly muthafokka",
     price: 76592
   },
+  {
+    categories: [CATEGORIES.sensors],
+    title: "Bear",
+    image: "https://imgur.com/gallery/WwooBND",
+    pros: ["avoid bears", "safely enjoy picnic baskets"],
+    cons: ["no bear sightings", "attracts deers",],
+    blurb: "🎶If you go out to the woods tonight your in for a big surprise🎶",
+    price: 20592,
+    addons: { bear: 3500, deer: 1500, aliens: 500 },
+  },
 ]
 
