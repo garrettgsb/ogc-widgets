@@ -7,7 +7,7 @@ import { UserInputContext } from './contexts.js';
 import { useContext } from 'react';
 // import aTeam from './assets/ateam.jpeg';
 
-const OneThirdTwoThirds = (props) => {
+const OneThirdTwoThirdsLayout = (props) => {
   return (
     <main className='one-third-two-thirds'>
       {props.children}
@@ -15,7 +15,7 @@ const OneThirdTwoThirds = (props) => {
   )
 }
 
-const LeftSideData = ({ items, setRightSideFocus, rightSideFocus, updateSelected, selections }) => {
+const ItemSelectionView = ({ items, setRightSideFocus, rightSideFocus, updateSelected, selections }) => {
 
   return (
     <aside className='one-third'>
@@ -38,7 +38,7 @@ const LeftSideData = ({ items, setRightSideFocus, rightSideFocus, updateSelected
   )
 }
 
-const RightSideData = ({ rightSideFocus }) => {
+const ItemDetailView = ({ rightSideFocus }) => {
   return (
     <aside className='two-third'>
 
@@ -71,14 +71,14 @@ const RightSideData = ({ rightSideFocus }) => {
 
 const CategoryDetails = ({ items, rightSideFocus, setRightSideFocus, updateSelected, selections }) => {
   return (
-    <OneThirdTwoThirds>
-      <LeftSideData items={items} setRightSideFocus={setRightSideFocus} rightSideFocus={rightSideFocus} updateSelected={updateSelected} selections={selections} />
-      <RightSideData rightSideFocus={rightSideFocus} />
-    </OneThirdTwoThirds>
+    <OneThirdTwoThirdsLayout>
+      <ItemSelectionView items={items} setRightSideFocus={setRightSideFocus} rightSideFocus={rightSideFocus} updateSelected={updateSelected} selections={selections} />
+      <ItemDetailView rightSideFocus={rightSideFocus} />
+    </OneThirdTwoThirdsLayout>
   )
 }
 
-const ContentArea = ({ items, updateSelected, selections }) => {
+const ItemContentArea = ({ items, updateSelected, selections }) => {
   const [rightSideFocus, setRightSideFocus] = useState([]);
   const { selectedCategory } = useContext(UserInputContext);
 
@@ -157,7 +157,7 @@ const PaneManagerWidget = () => {
       <main className="layout-manager">
         {/* <p>{JSON.stringify(appData)}</p> */}
         <SideBar categories={appCategories} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} selections={selections} appData={appData} getPriceByCategory={getPriceByCategory} />
-        <ContentArea items={items} updateSelected={updateSelected} selections={selections} />
+        <ItemContentArea items={items} updateSelected={updateSelected} selections={selections} />
         <BottomBar selections={selections} appData={appData} />
       </main>
     </UserInputContext.Provider>
