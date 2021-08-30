@@ -39,6 +39,13 @@ const ItemSelectionView = ({ items, setRightSideFocus, rightSideFocus, updateSel
 }
 
 const ItemDetailView = ({ rightSideFocus }) => {
+
+  function getUpperPriceRange(addons, price) {
+    const addonPrices = Object.values(addons);
+    const maxAddonPrice = Math.max(...addonPrices);
+    return maxAddonPrice + price;
+  }
+
   return (
     <aside className='two-third'>
 
@@ -46,7 +53,11 @@ const ItemDetailView = ({ rightSideFocus }) => {
         <h1>Click for more info</h1> :
         <div>
           <h1>{rightSideFocus.title}</h1>
-          <p>${rightSideFocus.price}</p>
+          {
+            rightSideFocus.addons ?
+              <p>${rightSideFocus.price} - ${getUpperPriceRange(rightSideFocus.addons, rightSideFocus.price)}</p> :
+              <p>${rightSideFocus.price}</p>
+          }
           <h4>Pros/Cons</h4>
           <ul className="attribute-list" >
             {rightSideFocus.pros.map((pro) => {
