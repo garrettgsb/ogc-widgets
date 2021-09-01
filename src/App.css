@@ -23,7 +23,6 @@
 }
 
 .total-price {
-  /* grid-column: 3/4; */
   grid-column: 3/4;
   grid-row: 1/2;
 }
@@ -86,18 +85,25 @@
   /* grid-template-rows: 1fr; */
 }
 
-.item-detail-view {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
-}
-
 .one-third {
   background-color: dodgerblue;
 }
 
 .two-third {
   background-color: chocolate;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+}
+
+.temp-left {
+ grid-column: 1/2;
+ grid-row: 1/4;
+}
+
+.item-focus-right {
+  grid-column: 2/3;
+  grid-row: 1/4;
 }
 
 .menu-item {

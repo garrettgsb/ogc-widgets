@@ -7,6 +7,8 @@ import { UserInputContext } from './contexts.js';
 import { useContext } from 'react';
 // import aTeam from './assets/ateam.jpeg';
 
+// WORK IN PROGRESS
+
 const OneThirdTwoThirdsLayout = (props) => {
   return (
     <main className='one-third-two-thirds'>
@@ -51,7 +53,7 @@ const ItemDetailView = ({ rightSideFocus }) => {
 
       {rightSideFocus.title === undefined ?
         <h1>Click for more info</h1> :
-        <div>
+        <div className="temp-left">
           <h1>{rightSideFocus.title}</h1>
           {
             rightSideFocus.addons ?
@@ -72,8 +74,10 @@ const ItemDetailView = ({ rightSideFocus }) => {
             })}
           </ul>
           <ul className="cons"></ul>
-          <h4>Description</h4>
-          <p>{rightSideFocus.blurb}</p>
+          <div className="item-focus-right">
+            <h4>Description</h4>
+            <p>{rightSideFocus.blurb}</p>
+          </div>
         </div>
       }
     </aside>
