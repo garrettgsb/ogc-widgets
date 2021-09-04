@@ -42,12 +42,16 @@ const ItemSelectionView = ({ items, setRightSideFocus, rightSideFocus, updateSel
 
 const ItemDetailView = ({ rightSideFocus }) => {
 
+  function print(bob) {
+    console.log(bob);
+  }
+
   function getUpperPriceRange(addons, price) {
     const addonPrices = Object.values(addons);
     const maxAddonPrice = Math.max(...addonPrices);
     return maxAddonPrice + price;
   }
-
+  // change temp left to two-third grid then add divs with subclasses
   return (
     <aside className='two-third'>
 
