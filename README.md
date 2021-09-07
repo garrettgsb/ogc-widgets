@@ -18,6 +18,8 @@ sheet or range within that document that you want to load.
 **REACT_APP_SHEET_API_KEY** - This is the API key created/obtained from here: https://console.cloud.google.com/apis/credentials
 (If you don't have one, click "+ Create Credentials" in the top bar, then "API key." You don't need to do anything with OAuth to make this work.)
 
+**Activate Google Sheets API** - Remember to activate the Sheets API or you will get a 403 - Permission Denied error. Follow the steps here: https://developers.google.com/workspace/guides/create-project once the project and API key are created.
+
 ### Available Scripts
 
 In the project directory, you can run:
