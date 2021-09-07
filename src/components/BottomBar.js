@@ -25,7 +25,7 @@ const BottomBar = ({ selections, appData }) => {
   }
 
   return (
-    <div className="bottombar">
+    <div className="bottombar cardlike">
       <h2>{title}</h2>
       <h1 className="total-price">Total ${currentCost}</h1>
       <aside className="progress-bar">

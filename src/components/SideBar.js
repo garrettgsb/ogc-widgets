@@ -7,7 +7,7 @@ const SideBar = ({ categories, selectedCategory, setSelectedCategory, selections
   console.log("selectedCategory: ", selectedCategory);
 
   return (
-    <aside className="sidebar">
+    <aside className="sidebar cardlike">
       {
         Object.values(categories).map((category) => {
           const selectedClass = selectedCategory === category ? 'selected' : '';
