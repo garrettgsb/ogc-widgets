@@ -22,8 +22,6 @@ const ItemSelectionView = ({ items, setRightSideFocus, rightSideFocus, updateSel
   return (
     <aside className='one-third'>
       {items.map((item) => {
-        // console.log("item: ", item);
-        // console.log("selections", selections)
         const isSelected = item === rightSideFocus ? "selected" : "";
         const isChosen = selections[item.title] ? "having-chosen" : "";
         const classList = ["menu-item", isSelected, isChosen].join(" ");
