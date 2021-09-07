@@ -20,7 +20,7 @@ function initGoogleSheet(onLoad, timeout=100) {
   return window.gapi.load('client', () => gapiStart(onLoad));
 }
 
-function gapiStart(onLoad, timeout=100) {
+function gapiStart(onLoad) {
   return window.gapi.client.init({
     'apiKey': process.env.REACT_APP_SHEET_API_KEY,
   }).then(onLoad);
