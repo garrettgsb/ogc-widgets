@@ -1,10 +1,11 @@
 import { useState } from 'react';
-import { data as appData, CATEGORIES as appCategories } from './appData.js';
+import { /*data as appData ,*/ CATEGORIES as appCategories } from './appData.js';
 import SideBar from './components/SideBar';
 import BottomBar from './components/BottomBar';
 import Personalize from './components/Personalize.js';
 import { UserInputContext } from './contexts.js';
 import { useContext } from 'react';
+import useGoogleSheet from './hooks/useGoogleSheet.js';
 // import aTeam from './assets/ateam.jpeg';
 
 // WORK IN PROGRESS
@@ -108,6 +109,8 @@ const ItemContentArea = ({ items, updateSelected, selections }) => {
 }
 
 const PaneManagerWidget = () => {
+  const { loading, sheetData } = useGoogleSheet();
+  const appData = sheetData;
   const [selectedCategory, setSelectedCategory] = useState(Object.values(appCategories)[0]);
   const [selections, setSelections] = useState({});
   const [title, setTitle] = useState("Your Awesome Van");
@@ -164,11 +167,12 @@ const PaneManagerWidget = () => {
     setIsOffgrid(e);
   }
 
+  if (loading || !appData) return <pre>⚡️ Loading ⚡️</pre>
+
   const items = appData.filter((item) => item.categories.includes(selectedCategory));
   return (
     <UserInputContext.Provider value={{ title, selectedCategory, updateTitle, budget, updateBudget, updateSelected, isOffgrid, updateIsOffgrid }}>
       <main className="layout-manager">
-        {/* <p>{JSON.stringify(appData)}</p> */}
         <SideBar categories={appCategories} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} selections={selections} appData={appData} getPriceByCategory={getPriceByCategory} />
         <ItemContentArea items={items} updateSelected={updateSelected} selections={selections} />
         <BottomBar selections={selections} appData={appData} />
@@ -178,4 +182,3 @@ const PaneManagerWidget = () => {
 }
 
 export default PaneManagerWidget;
-

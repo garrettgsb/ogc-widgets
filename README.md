@@ -2,6 +2,22 @@
 
 This App is meant as a testing and implimitation project to try-out looks, features, and ideas that will go on to be integrated in the main app.
 
+## Enviornment Variables
+
+This project requires the following environment variables:
+
+**REACT_APP_SHEET_URL** - This is the URL for the Google Sheet that you want to load. It should look something like this:
+
+```
+https://sheets.googleapis.com/v4/spreadsheets/1VWHtnA9OfngQFhVVsZHrZpPOxibFFzISchcN3l9pPDE/values/Data
+```
+
+Where the big long ID corresponds to the normal ID in the URL of the document, and `Data` corresponds to the specific
+sheet or range within that document that you want to load.
+
+**REACT_APP_SHEET_API_KEY** - This is the API key created/obtained from here: https://console.cloud.google.com/apis/credentials
+(If you don't have one, click "+ Create Credentials" in the top bar, then "API key." You don't need to do anything with OAuth to make this work.)
+
 ### Available Scripts
 
 In the project directory, you can run:
