@@ -81,13 +81,15 @@ export const data = [
   },
   {
     categories: [CATEGORIES.sensors],
-    title: "Bear",
+    title: "Animal",
     image: "https://imgur.com/gallery/WwooBND",
     pros: ["avoid bears", "safely enjoy picnic baskets"],
-    cons: ["no bear sightings", "attracts deers",],
+    cons: ["no bear sightings", "attracts deers (don't think about it)",],
     blurb: "🎶If you go out to the woods tonight your in for a big surprise🎶",
     price: 20592,
+    // addonMutallyExclusive: false,
     addons: { bear: 3500, deer: 1500, aliens: 500 },
+    // addons: { bear: {price: 3500, blurb: "more info here"}, deer: 1500, aliens: 500 },
   },
 ]
 
