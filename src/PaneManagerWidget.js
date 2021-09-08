@@ -112,10 +112,8 @@ const PaneManagerWidget = () => {
   const { loading, sheetData } = useGoogleSheet();
   const appData = sheetData;
   const appCategories = getCategories(appData);
-  // console.log("appCategories", appCategories);
   const [selectedCategory, setSelectedCategory] = useState("Personalize");
   const [selections, setSelections] = useState({});
-  // const [selectedCategory, setSelectedCategory] = useState(Object.values(appCategories)[0]);
   const [title, setTitle] = useState("Your Awesome Van");
   const [budget, setBudget] = useState(60000);
   const [isOffgrid, setIsOffgrid] = useState("yes");
