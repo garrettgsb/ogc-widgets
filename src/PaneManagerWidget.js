@@ -127,7 +127,7 @@ const PaneManagerWidget = () => {
     return appCategories;
   }
 
-  useEffect((appCategories) => {
+  useEffect(() => {
     if (!appCategories) {
       setTimeout(() => {
         setSelectedCategory(appCategories.Personalize)
