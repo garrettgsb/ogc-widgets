@@ -9,9 +9,9 @@ const Personalize = () => {
       <h1>{title}</h1>
       <h4>Project Name</h4>
       <input type="text" style={{ zIndex: 1 }} onChange={(e) => updateTitle(e.target.value)} />
-      <h4>Budget ${budget}</h4>
+      <h4>Set a Budget ${budget}</h4>
       <input type="text" onChange={(e) => updateBudget(e.target.value)} />
-      <h4>Offgrid?</h4>
+      <h4>Primarily Offgrid?</h4>
       <label>
         <input type="radio" checked={isOffgrid === "yes"} value="yes" onChange={(e) => updateIsOffgrid(e.target.value)} />
         Yes

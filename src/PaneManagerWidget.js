@@ -31,7 +31,7 @@ const ItemSelectionView = ({ items, setRightSideFocus, rightSideFocus, updateSel
             <h3>{item.title}</h3>
             <p>${item.price}</p>
             {/* <img src={aTeam} alt="The A Team" className="small-image" /> */}
-            <button onClick={() => updateSelected(item.title)}>{ isChosen ? '➖ Remove' : '➕ Add'}</button>
+            <button onClick={() => updateSelected(item.title)}>{isChosen ? '➖ Remove' : '➕ Add'}</button>
           </div>
         )
       })}
@@ -114,7 +114,7 @@ const PaneManagerWidget = () => {
   const appCategories = getCategories(appData);
   const [selectedCategory, setSelectedCategory] = useState("Personalize");
   const [selections, setSelections] = useState({});
-  const [title, setTitle] = useState("Your Awesome Van");
+  const [title, setTitle] = useState("Give Your Van a Name");
   const [budget, setBudget] = useState(60000);
   const [isOffgrid, setIsOffgrid] = useState("yes");
 
