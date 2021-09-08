@@ -113,7 +113,7 @@ const PaneManagerWidget = () => {
   const appData = sheetData;
   const appCategories = getCategories(appData);
   console.log("appCategories", appCategories);
-  const [selectedCategory, setSelectedCategory] = useState(appCategories.Personalize);
+  const [selectedCategory, setSelectedCategory] = useState("Personalize");
   const [selections, setSelections] = useState({});
   // const [selectedCategory, setSelectedCategory] = useState(Object.values(appCategories)[0]);
   const [title, setTitle] = useState("Your Awesome Van");
@@ -127,13 +127,13 @@ const PaneManagerWidget = () => {
     return appCategories;
   }
 
-  useEffect(() => {
-    if (!appCategories) {
-      setTimeout(() => {
-        setSelectedCategory(appCategories.Personalize)
-      }, 3000);
-    }
-  }, [])
+  // useEffect(() => {
+  //   if (appCategories === undefined) {
+  //     setTimeout(() =>
+  //       setSelectedCategory(appCategories.Personalize)
+  //       , 3000);
+  //   }
+  // }, [])
 
   function getPriceByCategory(category, selections, appData) {
     const selectedItemsInCategory = getSelectedItemsByCategory(category, selections, appData);
