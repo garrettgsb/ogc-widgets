@@ -32,7 +32,7 @@ const ItemSelectionView = ({ items, setRightSideFocus, rightSideFocus, updateSel
             <h3>{item.title}</h3>
             <p>${item.price}</p>
             {/* <img src={aTeam} alt="The A Team" className="small-image" /> */}
-            <button onClick={() => updateSelected(item.title)}>Add {item.title} to Project</button>
+            <button onClick={() => updateSelected(item.title)}>{ isChosen ? '➖ Remove' : '➕ Add'}</button>
           </div>
         )
       })}
@@ -170,7 +170,6 @@ const PaneManagerWidget = () => {
   return (
     <UserInputContext.Provider value={{ title, selectedCategory, updateTitle, budget, updateBudget, updateSelected, isOffgrid, updateIsOffgrid }}>
       <main className="layout-manager">
-        {/* <p>{JSON.stringify(appData)}</p> */}
         <SideBar categories={appCategories} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} selections={selections} appData={appData} getPriceByCategory={getPriceByCategory} />
         <ItemContentArea items={items} updateSelected={updateSelected} selections={selections} />
         <BottomBar selections={selections} appData={appData} />
