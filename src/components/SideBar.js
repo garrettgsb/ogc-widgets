@@ -1,10 +1,7 @@
 import getCategoriesHavingChosen from '../selectors/selectors';
 
 const SideBar = ({ categories, selectedCategory, setSelectedCategory, selections, appData, getPriceByCategory }) => {
-
   const categoriesHavingChosen = getCategoriesHavingChosen(selections, appData);
-  // console.log(categoriesHavingChosen);
-  console.log("selectedCategory: ", selectedCategory);
 
   return (
     <aside className="sidebar">

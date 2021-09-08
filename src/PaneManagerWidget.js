@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { /*data as appData ,*/ CATEGORIES as appCategories } from './appData.js';
+import { useState, useEffect } from 'react';
+// import { /*data as appData ,*/ CATEGORIES as appCategories } from './appData.js';
 import SideBar from './components/SideBar';
 import BottomBar from './components/BottomBar';
 import Personalize from './components/Personalize.js';
@@ -111,16 +111,32 @@ const ItemContentArea = ({ items, updateSelected, selections }) => {
 const PaneManagerWidget = () => {
   const { loading, sheetData } = useGoogleSheet();
   const appData = sheetData;
-  const [selectedCategory, setSelectedCategory] = useState(Object.values(appCategories)[0]);
+  const appCategories = getCategories(appData);
+  console.log("appCategories", appCategories);
+  const [selectedCategory, setSelectedCategory] = useState(appCategories.Personalize);
   const [selections, setSelections] = useState({});
+  // const [selectedCategory, setSelectedCategory] = useState(Object.values(appCategories)[0]);
   const [title, setTitle] = useState("Your Awesome Van");
   const [budget, setBudget] = useState(60000);
   const [isOffgrid, setIsOffgrid] = useState("yes");
 
+  function getCategories(appData) {
+    const appCategoriesSS = appData.map(item => item.categories).filter((value, index, self) => self.indexOf(value) === index);
+    const appCategories = {};
+    appCategoriesSS.forEach(category => appCategories[category] = category);
+    return appCategories;
+  }
+
+  useEffect((appCategories) => {
+    if (!appCategories) {
+      setTimeout(() => {
+        setSelectedCategory(appCategories.Personalize)
+      }, 3000);
+    }
+  }, [])
+
   function getPriceByCategory(category, selections, appData) {
     const selectedItemsInCategory = getSelectedItemsByCategory(category, selections, appData);
-    // console.log(selectedItemsInCategory);
-
     return selectedItemsInCategory.reduce((acc, item) => {
       return acc + item.price;
     }, 0);
