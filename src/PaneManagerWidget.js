@@ -112,7 +112,7 @@ const PaneManagerWidget = () => {
   const { loading, sheetData } = useGoogleSheet();
   const appData = sheetData;
   const appCategories = getCategories(appData);
-  console.log("appCategories", appCategories);
+  // console.log("appCategories", appCategories);
   const [selectedCategory, setSelectedCategory] = useState("Personalize");
   const [selections, setSelections] = useState({});
   // const [selectedCategory, setSelectedCategory] = useState(Object.values(appCategories)[0]);
@@ -151,7 +151,7 @@ const PaneManagerWidget = () => {
     //   return true
     // }
     // return false;
-    return item.categories[0] === category;
+    return item.categories === category;
   }
 
   function isSelected(item, selections) {
@@ -185,7 +185,9 @@ const PaneManagerWidget = () => {
 
   if (loading || !appData) return <pre>⚡️ Loading ⚡️</pre>
 
-  const items = appData.filter((item) => item.categories.includes(selectedCategory));
+  // const items = appData.filter((item) => item.categories.includes(selectedCategory));
+  const items = appData.filter((item) => item.categories === selectedCategory);
+
   return (
     <UserInputContext.Provider value={{ title, selectedCategory, updateTitle, budget, updateBudget, updateSelected, isOffgrid, updateIsOffgrid }}>
       <main className="layout-manager">

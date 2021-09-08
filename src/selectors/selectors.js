@@ -15,7 +15,9 @@ function getCategoriesHavingChosen(selections, appData) {
   //   categoryList.concat(matchingItem.categories);
   // })
 
-  return itemTitles.reduce((acc, title) => [...acc, ...(appData.find((item) => item.title === title).categories)], [])
+  // return itemTitles.reduce((acc, title) => [...acc, ...(appData.find((item) => item.title === title).categories)], [])
+  return itemTitles.reduce((acc, title) => [...acc, appData.find((item) => item.title === title).categories], [])
+
 
   // return categoryList;
 }
