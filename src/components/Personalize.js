@@ -49,7 +49,7 @@ const Personalize = () => {
       </label>
       <h4>Typical Trip Length?</h4>
       <div>
-        <input type="range" min="1" max="5" onChange={(e) => sliderTripValue(e.target.value)} className="trip-slider" />
+        <input type="range" min="1" max="5" defaultValue="1" onChange={(e) => sliderTripValue(e.target.value)} className="trip-slider" />
         <p>{tripLength}</p>
       </div>
       <p>terrain, full build?, </p>
