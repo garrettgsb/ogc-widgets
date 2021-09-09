@@ -79,7 +79,7 @@ const ItemDetailView = ({ rightSideFocus }) => {
               <p>{rightSideFocus.blurb}</p>
             </div>
           </div>
-          <img src={`/${rightSideFocus.image}`} alt="selected item" className="col-image" />
+          <img src={`/${rightSideFocus.image}`} alt="If you're reading this it means our pic is MIA" className="col-image" />
         </div>
       }
     </aside>
